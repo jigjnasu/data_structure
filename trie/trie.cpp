@@ -95,8 +95,8 @@ private:
 };
 
 const std::vector<std::string> names = {"adwita", "atharv", "ajay", "anil",
-                                            "anoop", "arvind", "arun", "ananya",
-                                            "abhay", "babita"};
+                                        "anoop", "arvind", "arun", "ananya",
+                                        "abhay", "babita"};
 
 
 inline void print(const std::vector<std::string>& v) {
