@@ -49,6 +49,24 @@ public:
         return std::max(l, r);
     }
 
+    int min(Node* root) {
+        if (root == nullptr)
+            throw("Please enter a valid root");
+        Node* node = root;
+        while (node->left)
+            node = node->left;
+        return node->val;
+    }
+
+    int max(Node* root) {
+        if (root == nullptr)
+            throw("Please enter a valid root");
+        Node* node = root;
+        while (node->right)
+            node = node->right;
+        return node->val;
+    }
+
     void bfs(Node* root) {
         printf("--------------------------------------------------\n");
         std::queue<Node*> q;
@@ -95,9 +113,17 @@ void test_height() {
     printf("height == [%d]\n", bst.height(root));
 }
 
+void test_min_max() {
+    BST bst;
+    Node* root = build_bst();
+    printf("minimum value == [%d]\n", bst.min(root));
+    printf("maximum value == [%d]\n", bst.max(root));
+}
+
 int main() {
     test_insert();
-    test_height();
+    //test_height();
+    test_min_max();
 
     return 0;
 }
