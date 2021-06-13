@@ -67,6 +67,16 @@ public:
         return node->val;
     }
 
+    int min_rec(Node* root) {
+        if (root->left) return min_rec(root->left);
+        return root->val;
+    }
+
+    int max_rec(Node* root) {
+        if (root->right) return max_rec(root->right);
+        return root->val;
+    }
+
     void bfs(Node* root) {
         printf("--------------------------------------------------\n");
         std::queue<Node*> q;
@@ -116,8 +126,8 @@ void test_height() {
 void test_min_max() {
     BST bst;
     Node* root = build_bst();
-    printf("minimum value == [%d]\n", bst.min(root));
-    printf("maximum value == [%d]\n", bst.max(root));
+    printf("minimum value == [%8d] || minimum recursive value == [%8d]\n", bst.min(root), bst.min_rec(root));
+    printf("maximum value == [%8d] || maximum recursive value == [%8d]\n", bst.max(root), bst.max_rec(root));
 }
 
 int main() {
