@@ -77,6 +77,11 @@ public:
         return root->val;
     }
 
+    int sum(Node* root) {
+        if (root == nullptr) return 0;
+        return root->val + sum(root->left) + sum(root->right);
+    }
+
     void bfs(Node* root) {
         printf("--------------------------------------------------\n");
         std::queue<Node*> q;
@@ -130,10 +135,17 @@ void test_min_max() {
     printf("maximum value == [%8d] || maximum recursive value == [%8d]\n", bst.max(root), bst.max_rec(root));
 }
 
+void test_sum() {
+    BST bst;
+    Node* root = build_bst();
+    printf("sum of all tree nodes == [%d]\n", bst.sum(root));
+}
+
 int main() {
     test_insert();
     //test_height();
-    test_min_max();
+    //test_min_max();
+    test_sum();
 
     return 0;
 }
