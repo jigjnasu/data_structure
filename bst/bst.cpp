@@ -41,6 +41,14 @@ public:
         return root;
     }
 
+    int height(Node* root) {
+        if (root == nullptr)
+            return 0;
+        int l = height(root->left) + 1;
+        int r = height(root->right) + 1;
+        return std::max(l, r);
+    }
+
     void bfs(Node* root) {
         printf("--------------------------------------------------\n");
         std::queue<Node*> q;
@@ -58,7 +66,7 @@ public:
     }
 };
 
-void insert_test() {
+Node* build_bst() {
     BST bst;
     Node* root = nullptr;
     root = bst.insert(root, 100);
@@ -72,12 +80,24 @@ void insert_test() {
     root = bst.insert(root, 200);
     root = bst.insert(root, 10);
     root = bst.insert(root, 5);
-    root = bst.insert(root, 1);
+    return root;
+}
+
+void test_insert() {
+    BST bst;
+    Node* root = build_bst();
     bst.bfs(root);
 }
 
+void test_height() {
+    BST bst;
+    Node* root = build_bst();
+    printf("height == [%d]\n", bst.height(root));
+}
+
 int main() {
-    insert_test();
+    test_insert();
+    test_height();
 
     return 0;
 }
