@@ -83,6 +83,18 @@ public:
         int r = height(root->right) + 1;
         return std::max(l, r);
     }
+
+    int min(Node* root) {
+        while (root->left)
+            root = root->left;
+        return root->val;
+    }
+
+    int max(Node* root) {
+        while (root->right)
+            root = root->right;
+        return root->val;
+    }
 };
 
 Node* get_tree() {
@@ -121,6 +133,8 @@ inline void test_1() {
     printf("------------------------------------------------------------------------------------\n");
     bst.bfs(root);
     printf("height of tree == [%d]\n", bst.height(root));
+    printf("min value of tree == [%d]\n", bst.min(root));
+    printf("max value of tree == [%d]\n", bst.max(root));
 }
 
 int main() {
