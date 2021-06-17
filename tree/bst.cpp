@@ -58,6 +58,31 @@ public:
         if (root->right) postorder(root->right);
         printf("%d ", root->val);
     }
+
+    void bfs(Node* root) {
+        printf("------------------------------------------------------------------------------------\n");
+        if (root) {
+            std::queue<Node*> q;
+            q.push(root);
+            while (!q.empty()) {
+                for (int i = static_cast<int>(q.size()); i > 0; --i) {
+                    root = q.front(); q.pop();
+                    printf("%d ", root->val);
+                    if (root->left) q.push(root->left);
+                    if (root->right) q.push(root->right);
+                }
+                printf("\n");
+            }
+        }
+        printf("------------------------------------------------------------------------------------\n");
+    }
+
+    int height(Node* root) {
+        if (root == nullptr) return 0;
+        int l = height(root->left) + 1;
+        int r = height(root->right) + 1;
+        return std::max(l, r);
+    }
 };
 
 Node* get_tree() {
@@ -94,6 +119,8 @@ inline void test_1() {
     printf("----------------------------------------- post order -------------------------------\n");
     bst.postorder(root);
     printf("------------------------------------------------------------------------------------\n");
+    bst.bfs(root);
+    printf("height of tree == [%d]\n", bst.height(root));
 }
 
 int main() {
