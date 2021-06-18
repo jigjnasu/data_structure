@@ -15,6 +15,13 @@ struct Node {
     Node* right = nullptr;
 };
 
+inline void print_vector(const std::vector<int>& v) {
+    printf("---------------------------------------------------\n");
+    for (int e : v)
+        printf("%d ", e);
+    printf("---------------------------------------------------\n");
+}
+
 class BST {
 public:
     Node* insert(Node* root, int val) {
@@ -95,6 +102,11 @@ public:
             root = root->right;
         return root->val;
     }
+
+    std::vector<int> sort(bool asc = true) {
+        std::vector<int> res;
+        return res;
+    }
 };
 
 Node* get_tree() {
@@ -135,6 +147,11 @@ inline void test_1() {
     printf("height of tree == [%d]\n", bst.height(root));
     printf("min value of tree == [%d]\n", bst.min(root));
     printf("max value of tree == [%d]\n", bst.max(root));
+}
+
+inline void test_2() {
+    BST bst;
+    Node* root = get_tree();
 }
 
 int main() {
