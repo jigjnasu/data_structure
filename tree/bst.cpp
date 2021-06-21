@@ -112,6 +112,21 @@ public:
         return res;
     }
 
+    bool find(Node* root, int k) {
+        if (root) {
+            Node* node = root;
+            while (node) {
+                if (node->val == k)
+                    return true;
+                if (k < node->val)
+                    node = node->left;
+                else
+                    node = node->right;
+            }
+        }
+        return false;
+    }
+
 private:
     void sort_asc(Node* node, std::vector<int>& v) {
         if (node == nullptr)
@@ -186,9 +201,19 @@ inline void test_2() {
     print(bst.sort(root, false));
 }
 
+inline void test_3() {
+    BST bst;
+    Node* root = get_tree();
+    int k = 190;
+    printf("%8d found == [%d]\n", k, bst.find(root, k));
+    k = 15;
+    printf("%8d found == [%d]\n", k, bst.find(root, k));
+}
+
 int main() {
     //test_1();
-    test_2();
+    //test_2();
+    test_3();
 
     return 0;
 }
