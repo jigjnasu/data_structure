@@ -103,9 +103,30 @@ public:
         return root->val;
     }
 
-    std::vector<int> sort(bool asc = true) {
+    std::vector<int> sort(Node* root, bool asc = true) {
         std::vector<int> res;
+        if (asc)
+            sort_asc(root, res);
+        else
+            sort_des(root, res);
         return res;
+    }
+
+private:
+    void sort_asc(Node* node, std::vector<int>& v) {
+        if (node == nullptr)
+            return;
+        sort_asc(node->left, v);
+        v.emplace_back(node->val);
+        sort_asc(node->right, v);
+    }
+
+    void sort_des(Node* node, std::vector<int>& v) {
+        if (node == nullptr) 
+            return;
+        sort_des(node->right, v);
+        v.emplace_back(node->val);
+        sort_des(node->left, v);
     }
 };
 
@@ -131,6 +152,13 @@ Node* get_tree() {
     return root;
 }
 
+void print(const std::vector<int>& v) {
+    printf("------------------------------------------------------------------------------------\n");
+    for (int e : v)
+        printf("%d ", e);
+    printf("\n------------------------------------------------------------------------------------\n");
+}
+
 inline void test_1() {
     BST bst;
     Node* root = get_tree();
@@ -152,10 +180,15 @@ inline void test_1() {
 inline void test_2() {
     BST bst;
     Node* root = get_tree();
+    printf("SORTING --> Ascending\n");
+    print(bst.sort(root, true));
+    printf("SORTING --> Descending\n");
+    print(bst.sort(root, false));
 }
 
 int main() {
-    test_1();
+    //test_1();
+    test_2();
 
     return 0;
 }
