@@ -66,6 +66,27 @@ public:
         printf("%d ", root->val);
     }
 
+    void data_pre_order(Node* root, std::vector<int>& data) {
+        if (root == nullptr) return;
+        data.emplace_back(root->val);
+        data_pre_order(root->left, data);
+        data_pre_order(root->right, data);
+    }
+
+    void data_in_order(Node* root, std::vector<int>& data) {
+        if (root == nullptr) return;
+        data_in_order(root->left, data);
+        data.emplace_back(root->val);
+        data_in_order(root->right, data);
+    }
+
+    void data_post_order(Node* root, std::vector<int>& data) {
+        if (root == nullptr) return;
+        data_post_order(root->left, data);
+        data_post_order(root->right, data);
+        data.emplace_back(root->val);
+    }
+
     void bfs(Node* root) {
         printf("------------------------------------------------------------------------------------\n");
         if (root) {
@@ -271,11 +292,32 @@ inline void test_4() {
     printf("[%8d] farthest found in tree == [%8d]\n", k, bst.find_farthest(root, k));
 }
 
+/*
+    testing pre order, in order and post order data collection
+*/
+inline void test_5() {
+    BST bst;
+    Node* root = get_tree();
+    bst.bfs(root);
+    std::vector<int> v;
+    bst.data_pre_order(root, v);
+    print(v);
+
+    v = std::vector<int>();
+    bst.data_in_order(root, v);
+    print(v);
+
+    v = std::vector<int>();
+    bst.data_post_order(root, v);
+    print(v);
+}
+
 int main() {
     //test_1();
     //test_2();
     //test_3();
-    test_4();
+    //test_4();
+    test_5();
 
     return 0;
 }
