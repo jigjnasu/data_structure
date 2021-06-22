@@ -127,6 +127,48 @@ public:
         return false;
     }
 
+    int find_nearest(Node* root, int k) {
+        int res = 0;
+        int diff = INT_MAX;
+        if (root) {
+            Node* node = root;
+            while (node) {
+                if (k == node->val)
+                    return k;
+                if (std::abs(k - node->val) < diff) {
+                    diff = std::abs(k - node->val);
+                    res = node->val;
+                }
+                if (k < node->val)
+                    node = node->left;
+                else 
+                    node = node->right;
+            }
+        }
+        return res;
+    }
+
+    int find_farthest(Node* root, int k) {
+        int res = 0;
+        int diff = INT_MIN;
+        if (root) {
+            Node* node = root;
+            while (node) {
+                if (k == node->val)
+                    return k;
+                if (std::abs(k - node->val) > diff) {
+                    diff = std::abs(k - node->val);
+                    res = node->val;
+                }
+                if (k < node->val)
+                    node = node->right;
+                else
+                    node = node->left;
+            }
+        }
+        return res;
+    }
+
 private:
     void sort_asc(Node* node, std::vector<int>& v) {
         if (node == nullptr)
@@ -204,16 +246,36 @@ inline void test_2() {
 inline void test_3() {
     BST bst;
     Node* root = get_tree();
-    int k = 190;
-    printf("%8d found == [%d]\n", k, bst.find(root, k));
-    k = 15;
-    printf("%8d found == [%d]\n", k, bst.find(root, k));
+    int k = 199;
+    printf("[%8d] found in tree == [%d]\n", k, static_cast<bool>(bst.find(root, k)));
+    k = 1;
+    printf("[%8d] found in tree == [%d]\n", k, static_cast<bool>(bst.find(root, k)));
+    k = 5;
+    printf("[%8d] found in tree == [%d]\n", k, static_cast<bool>(bst.find(root, k)));
+}
+
+/*
+    nearest and farthest neighbours
+*/
+inline void test_4() {
+    BST bst;
+    Node* root = get_tree();
+    int k = 199;
+    printf("[%8d] nearest  found in tree == [%8d]\n", k, bst.find_nearest(root, k));
+    printf("[%8d] farthest found in tree == [%8d]\n", k, bst.find_farthest(root, k));
+    k = -10;
+    printf("[%8d] nearest  found in tree == [%8d]\n", k, bst.find_nearest(root, k));
+    printf("[%8d] farthest found in tree == [%8d]\n", k, bst.find_farthest(root, k));
+    k = 59;
+    printf("[%8d] nearest  found in tree == [%8d]\n", k, bst.find_nearest(root, k));
+    printf("[%8d] farthest found in tree == [%8d]\n", k, bst.find_farthest(root, k));
 }
 
 int main() {
     //test_1();
     //test_2();
-    test_3();
+    //test_3();
+    test_4();
 
     return 0;
 }
