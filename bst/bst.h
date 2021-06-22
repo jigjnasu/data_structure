@@ -26,6 +26,16 @@ struct Node {
 
 class BST {
 public:
+    Node* insert_rec(Node* root, int val) {
+        if (root == nullptr)
+            root = new Node(val);
+        if (val < root->val)
+            root->left = insert_rec(root->left, val);
+        else
+            root->right = insert_rec(root->right, val);
+        return root;
+    }
+
     Node* insert_iter(Node* root, int val) {
         if (root == nullptr)
             root = new Node(val);
@@ -52,7 +62,7 @@ public:
 
     void bfs(Node* root) {
         printf("-------------------------------------------------------------------\n");
-        printf("                          BST of BST\n");
+        printf("                          BFS of BST\n");
         if (root) {
             std::queue<Node*> q;
             q.push(root);

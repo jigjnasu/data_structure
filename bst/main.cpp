@@ -6,26 +6,21 @@
 
 #include "bst.h"
 
-Node* build_tree_1() {
+inline void test_bst_inserts() {
     BST bst;
     std::vector<int> v = {100, 50, 150, 25, 75, 125, 175, 30, 45, 55, 65, 165, 185, 200, 15, 20, 10, 5, 1, 7, 9, 23, 180, 300};
-    Node* root = nullptr;
-    for (int e : v)
-        root = bst.insert_iter(root, e);
-    return root;
-}
-
-/*
-* test the insertion and traversals of bst
-*/
-inline void test_insert_and_traversals() {
-    Node* root = build_tree_1();
-    BST bst;
-    bst.bfs(root);
+    Node* root1 = nullptr;
+    Node* root2 = nullptr;
+    for (int e : v) {
+        root1 = bst.insert_iter(root1, e);
+        root2 = bst.insert_rec(root2, e);
+    }
+    bst.bfs(root1);
+    bst.bfs(root2);
 }
 
 int main() {
-    test_insert_and_traversals();
+    test_bst_inserts();
 
     return 0;
 }
