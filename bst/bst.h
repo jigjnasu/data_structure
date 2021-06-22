@@ -29,10 +29,12 @@ public:
     Node* insert_rec(Node* root, int val) {
         if (root == nullptr)
             root = new Node(val);
-        if (val < root->val)
-            root->left = insert_rec(root->left, val);
-        else
-            root->right = insert_rec(root->right, val);
+        else {
+            if (val < root->val)
+                root->left = insert_rec(root->left, val);
+            else
+                root->right = insert_rec(root->right, val);
+        }
         return root;
     }
 
