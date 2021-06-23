@@ -62,6 +62,27 @@ public:
         return root;
     }
 
+    void preorder(Node* root) {
+        if (root == nullptr) return;
+        printf("%d ", root->val);
+        preorder(root->left);
+        preorder(root->right);
+    }
+
+    void inorder(Node* root) {
+        if (root == nullptr) return;
+        inorder(root->left);
+        printf("%d ", root->val);
+        inorder(root->right);
+    }
+
+    void postorder(Node* root) {
+        if (root == nullptr) return;
+        postorder(root->left);
+        postorder(root->right);
+        printf("%d ", root->val);
+    }
+
     void bfs(Node* root) {
         printf("-------------------------------------------------------------------\n");
         printf("                          BFS of BST\n");
@@ -79,6 +100,46 @@ public:
             }
         }
         printf("-------------------------------------------------------------------\n");
+    }
+
+    std::vector<int> preorder_data(Node* root) {
+        std::vector<int> res;
+        m_preorder_data(root, res);
+        return res;
+    }
+
+    std::vector<int> inorder_data(Node* root) {
+        std::vector<int> res;
+        m_inorder_data(root, res);
+        return res;
+    }
+
+    std::vector<int> postorder_data(Node* root) {
+        std::vector<int> res;
+        m_postorder_data(root, res);
+        return res;
+    }
+
+private:
+    void m_preorder_data(Node* root, std::vector<int>& res) {
+        if (root == nullptr) return;
+        res.emplace_back(root->val);
+        m_preorder_data(root->left, res);
+        m_preorder_data(root->right, res);
+    }
+
+    void m_inorder_data(Node* root, std::vector<int>& res) {
+        if (root == nullptr) return;
+        m_inorder_data(root->left, res);
+        res.emplace_back(root->val);
+        m_inorder_data(root->right, res);
+    }
+
+    void m_postorder_data(Node* root, std::vector<int>& res) {
+        if (root == nullptr) return;
+        m_postorder_data(root->left, res);
+        m_postorder_data(root->right, res);
+        res.emplace_back(root->val);
     }
 };
 #endif //DATA_STRUCTURE_BST_BST_H_
