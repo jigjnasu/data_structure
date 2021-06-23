@@ -98,11 +98,21 @@ inline void test_bst_nearest_search() {
         k, bsts.search_nearest_iter(root, k), bsts.search_nearest_rec(root, k));
 }
 
+inline void test_bst_min_max() {
+    BST::BST bst;
+    Node* root = get_tree();
+    bst.bfs(root);
+    BST_SEARCH::BST bsts;
+    printf("minimum value in tree == [%8d]\n", bsts.min(root));
+    printf("maximum value in tree == [%8d]\n", bsts.max(root));
+}
+
 int main() {
     //test_bst_inserts();
     //test_bst_traversals();
     //test_bst_search();
-    test_bst_nearest_search();
+    //test_bst_nearest_search();
+    test_bst_min_max();
 
     return 0;
 }

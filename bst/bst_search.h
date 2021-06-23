@@ -67,6 +67,18 @@ namespace BST_SEARCH {
             return res;
         }
 
+        int min(Node* root) {
+            while (root->left)
+                root = root->left;
+            return root->val;
+        }
+
+        int max(Node* root) {
+            while (root->right)
+                root = root->right;
+            return root->val;
+        }        
+
     private:
         void m_search_neartest_rec(Node* root, int k, int& res, int diff) {
             if (root) {
