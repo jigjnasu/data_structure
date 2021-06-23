@@ -29,6 +29,27 @@ class BST(object):
         else:
             return self.search_rec(root.right, k)
 
+    '''
+        find the nearest or exact value to k in the BST
+    '''
+    def nearest(self, root, k):
+        res = 0
+        if root is not None:
+            node = root
+            diff = 10*100
+            while node:
+                if k == node.val:
+                    return k
+                if abs(k - node.val) < diff:
+                    diff = abs(k - node.val)
+                    res = node.val
+                if k < node.val:
+                    node = node.left
+                else:
+                    node = node.right
+        return res
+                    
+
     def min(self, root):
         node = root
         while node.left:
