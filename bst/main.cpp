@@ -74,10 +74,35 @@ inline void test_bst_search() {
         k, bsts.search_iter(root, k), bsts.search_rec(root, k));
 }
 
+inline void test_bst_nearest_search() {
+    BST::BST bst;
+    BST_SEARCH::BST bsts;
+    Node* root = get_tree();
+    bst.bfs(root);
+    int k = 199;
+    printf("[%8d] is in tree == [%8d] || [%8d]\n", 
+        k, bsts.search_nearest_iter(root, k), bsts.search_nearest_rec(root, k));
+    k = 125; printf("[%8d] is in tree == [%8d] || [%8d]\n", 
+        k, bsts.search_nearest_iter(root, k), bsts.search_nearest_rec(root, k));
+    k = 180; printf("[%8d] is in tree == [%8d] || [%8d]\n", 
+        k, bsts.search_nearest_iter(root, k), bsts.search_nearest_rec(root, k));
+    k = 179; printf("[%8d] is in tree == [%8d] || [%8d]\n", 
+        k, bsts.search_nearest_iter(root, k), bsts.search_nearest_rec(root, k));
+    k = -91; printf("[%8d] is in tree == [%8d] || [%8d]\n", 
+        k, bsts.search_nearest_iter(root, k), bsts.search_nearest_rec(root, k));
+    k = -23; printf("[%8d] is in tree == [%8d] || [%8d]\n", 
+        k, bsts.search_nearest_iter(root, k), bsts.search_nearest_rec(root, k));
+    k = 23;  printf("[%8d] is in tree == [%8d] || [%8d]\n", 
+        k, bsts.search_nearest_iter(root, k), bsts.search_nearest_rec(root, k));
+    k = 399;  printf("[%8d] is in tree == [%8d] || [%8d]\n", 
+        k, bsts.search_nearest_iter(root, k), bsts.search_nearest_rec(root, k));
+}
+
 int main() {
     //test_bst_inserts();
     //test_bst_traversals();
-    test_bst_search();
+    //test_bst_search();
+    test_bst_nearest_search();
 
     return 0;
 }
