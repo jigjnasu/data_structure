@@ -75,15 +75,18 @@ def test_search():
     b.bfs(root)
     bs = bst_search.BST()
     k = 199
-    print('[{}] found in tree == [{}]'.format(k, bs.search_iter(root, k)))
+    print('[{}] found in tree == [{}] || [{}]'.format(k, bs.search_iter(root, k), bs.search_rec(root, k)))
     k = 7
-    print('[{}] found in tree == [{}]'.format(k, bs.search_iter(root, k)))
+    print('[{}] found in tree == [{}] || [{}]'.format(k, bs.search_iter(root, k), bs.search_rec(root, k)))
     k = 300
-    print('[{}] found in tree == [{}]'.format(k, bs.search_iter(root, k)))
+    print('[{}] found in tree == [{}] || [{}]'.format(k, bs.search_iter(root, k), bs.search_rec(root, k)))
     k = -125
-    print('[{}] found in tree == [{}]'.format(k, bs.search_iter(root, k)))
+    print('[{}] found in tree == [{}] || [{}]'.format(k, bs.search_iter(root, k), bs.search_rec(root, k)))
     k = 187
-    print('[{}] found in tree == [{}]'.format(k, bs.search_iter(root, k)))
+    print('[{}] found in tree == [{}] || [{}]'.format(k, bs.search_iter(root, k), bs.search_rec(root, k)))
+
+    print('mimimum value in tree == [{}]'.format(bs.min(root)))
+    print('maximum value in tree == [{}]'.format(bs.max(root)))
 
 if __name__ == '__main__':
     #test_insert()
