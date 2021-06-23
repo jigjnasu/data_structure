@@ -6,6 +6,7 @@
 
 import common
 import bst
+import bst_search
 
 def get_tree_iter():
     arr = [100, 50, 150, 25, 75, 125, 175, 30, 45, 55, 65, 165, 185, 200, 15, 20, 10, 5, 1, 7, 9, 23, 180, 300]
@@ -65,7 +66,27 @@ def test_height():
     b.bfs(root)
     print('height of the tree == [{}]'.format(b.height(root)))
 
+'''
+    testing for searching in bst
+'''
+def test_search():
+    b = bst.BST()
+    root = get_tree_iter()
+    b.bfs(root)
+    bs = bst_search.BST()
+    k = 199
+    print('[{}] found in tree == [{}]'.format(k, bs.search_iter(root, k)))
+    k = 7
+    print('[{}] found in tree == [{}]'.format(k, bs.search_iter(root, k)))
+    k = 300
+    print('[{}] found in tree == [{}]'.format(k, bs.search_iter(root, k)))
+    k = -125
+    print('[{}] found in tree == [{}]'.format(k, bs.search_iter(root, k)))
+    k = 187
+    print('[{}] found in tree == [{}]'.format(k, bs.search_iter(root, k)))
+
 if __name__ == '__main__':
     #test_insert()
     #test_traversals()
-    test_height()
+    #test_height()
+    test_search()
