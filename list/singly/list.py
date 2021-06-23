@@ -41,6 +41,27 @@ class List(object):
         else:
             return None
 
+    def search(self, head, k):
+        if head:
+            node = head
+            while node:
+                if k == node.val:
+                    return True
+                node = node.next
+        return False
+
+    def reverse(self, head):
+        curr = head
+        next = None
+        prev = None
+        while curr:
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        head = prev
+        return head
+
     def traverse(self, head):
         print('--------------------------------------------------')
         node = head

@@ -9,6 +9,7 @@ import list
 '''
     list push_front, push_back and traversal test
     adding front and back functions as well
+    search an item
 '''
 def test_push():
     head1 = None
@@ -26,5 +27,23 @@ def test_push():
     print('front item at the list == [{}] || [{}]'.format(l.front(head1), l.front(head2)))
     print('back  item at the list == [{}] || [{}]'.format(l.back(head1), l.back(head2)))
 
+    k = 20
+    print('[{}] is in the list == [{}]'.format(k, l.search(head2, k)))
+    k = 29
+    print('[{}] is in the list == [{}]'.format(k, l.search(head2, k)))
+
+'''
+    let's test the revering of the linked list
+'''
+def test_reverse():
+    head = None
+    l = list.List()
+    for i in range(1, 51):
+        head = l.push_front(head, i)
+    l.traverse(head)
+    head = l.reverse(head)
+    l.traverse(head)
+
 if __name__ == '__main__':
-    test_push()
+    #test_push()
+    test_reverse()
