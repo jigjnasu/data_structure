@@ -58,13 +58,20 @@ inline void test_bst_search() {
     Node* root = get_tree();
     bst.bfs(root);
     int k = 199;
-    printf("[%8d] is in tree == [%d]\n", k, bsts.search_iter(root, k));
-    k = 125; printf("[%8d] is in tree == [%d]\n", k, bsts.search_iter(root, k));
-    k = 180; printf("[%8d] is in tree == [%d]\n", k, bsts.search_iter(root, k));
-    k = 179; printf("[%8d] is in tree == [%d]\n", k, bsts.search_iter(root, k));
-    k = -91; printf("[%8d] is in tree == [%d]\n", k, bsts.search_iter(root, k));
-    k = -23; printf("[%8d] is in tree == [%d]\n", k, bsts.search_iter(root, k));
-    k = 23;  printf("[%8d] is in tree == [%d]\n", k, bsts.search_iter(root, k));
+    printf("[%8d] is in tree == [%d] || [%d]\n", 
+        k, bsts.search_iter(root, k), bsts.search_rec(root, k));
+    k = 125; printf("[%8d] is in tree == [%d] || [%d]\n", 
+        k, bsts.search_iter(root, k), bsts.search_rec(root, k));
+    k = 180; printf("[%8d] is in tree == [%d] || [%d]\n", 
+        k, bsts.search_iter(root, k), bsts.search_rec(root, k));
+    k = 179; printf("[%8d] is in tree == [%d] || [%d]\n", 
+        k, bsts.search_iter(root, k), bsts.search_rec(root, k));
+    k = -91; printf("[%8d] is in tree == [%d] || [%d]\n", 
+        k, bsts.search_iter(root, k), bsts.search_rec(root, k));
+    k = -23; printf("[%8d] is in tree == [%d] || [%d]\n", 
+        k, bsts.search_iter(root, k), bsts.search_rec(root, k));
+    k = 23;  printf("[%8d] is in tree == [%d] || [%d]\n", 
+        k, bsts.search_iter(root, k), bsts.search_rec(root, k));
 }
 
 int main() {

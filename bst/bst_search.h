@@ -27,7 +27,15 @@ namespace BST_SEARCH {
         }
 
         bool search_rec(Node* root, int k) {
-
+            if (root) {
+                if (k == root->val) 
+                    return true;
+                if (k < root->val) 
+                    return search_rec(root->left, k);
+                else
+                    return search_rec(root->right, k);
+            }
+            return false;
         }
     };
 }
