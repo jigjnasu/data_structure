@@ -31,5 +31,20 @@ def test_insert():
     b.bfs(root1)
     b.bfs(root2)
 
+def test_traversals():
+    b = bst.BST()
+    root = get_tree_iter()
+    b.bfs(root)
+    print('--------------------------------- pre order ------------------------------')
+    b.preorder(root)
+    print('')
+    print('--------------------------------- in order -------------------------------')
+    b.inorder(root)
+    print('')
+    print('--------------------------------- post order ------------------------------')
+    b.postorder(root)
+    print('')
+
 if __name__ == '__main__':
-    test_insert()
+    #test_insert()
+    test_traversals()

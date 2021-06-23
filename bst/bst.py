@@ -37,6 +37,27 @@ class BST(object):
                 root.right = self.insert_rec(root.right, val)
         return root
 
+    def preorder(self, root):
+        if root == None:
+            return
+        print(root.val, end=' ')
+        self.preorder(root.left)
+        self.preorder(root.right)
+
+    def inorder(self, root):
+        if root == None:
+            return
+        self.inorder(root.left)
+        print(root.val, end=' ')
+        self.inorder(root.right)
+
+    def postorder(self, root):
+        if root == None:
+            return
+        self.postorder(root.left)
+        self.postorder(root.right)
+        print(root.val, end=' ')
+
     def bfs(self, root):
         print('--------------------------------------------------------')
         if root is not None:
