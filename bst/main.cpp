@@ -5,6 +5,7 @@
 */
 
 #include "bst.h"
+#include "bst_search.h"
 
 inline void print(const std::vector<int>& v) {
     printf("----------------------------------------------------------------------------------------\n");
@@ -14,7 +15,7 @@ inline void print(const std::vector<int>& v) {
 }
 
 inline Node* get_tree() {
-    BST bst;
+    BST::BST bst;
     std::vector<int> v = {100, 50, 150, 25, 75, 125, 175, 30, 45, 55, 65, 165, 185, 200, 15, 20, 10, 5, 1, 7, 9, 23, 180, 300};
     Node* root = nullptr;
     for (int e : v)
@@ -23,7 +24,7 @@ inline Node* get_tree() {
 }
 
 inline void test_bst_inserts() {
-    BST bst;
+    BST::BST bst;
     Node* root1 = get_tree();
     Node* root2 = get_tree();
     bst.bfs(root1);
@@ -31,7 +32,7 @@ inline void test_bst_inserts() {
 }
 
 inline void test_bst_traversals() {
-    BST bst;
+    BST::BST bst;
     Node* root = get_tree();
     bst.bfs(root);
     printf("------------------------------------ pre order -----------------------------------------\n");
@@ -48,9 +49,28 @@ inline void test_bst_traversals() {
     print(bst.postorder_data(root));
 }
 
+/*
+    Let's now do some search in the bst for targets, closest, farthest, min and max etc...
+*/
+inline void test_bst_search() {
+    BST::BST bst;
+    BST_SEARCH::BST bsts;
+    Node* root = get_tree();
+    bst.bfs(root);
+    int k = 199;
+    printf("[%8d] is in tree == [%d]\n", k, bsts.search_iter(root, k));
+    k = 125; printf("[%8d] is in tree == [%d]\n", k, bsts.search_iter(root, k));
+    k = 180; printf("[%8d] is in tree == [%d]\n", k, bsts.search_iter(root, k));
+    k = 179; printf("[%8d] is in tree == [%d]\n", k, bsts.search_iter(root, k));
+    k = -91; printf("[%8d] is in tree == [%d]\n", k, bsts.search_iter(root, k));
+    k = -23; printf("[%8d] is in tree == [%d]\n", k, bsts.search_iter(root, k));
+    k = 23;  printf("[%8d] is in tree == [%d]\n", k, bsts.search_iter(root, k));
+}
+
 int main() {
     //test_bst_inserts();
-    test_bst_traversals();
+    //test_bst_traversals();
+    test_bst_search();
 
     return 0;
 }
