@@ -103,6 +103,7 @@ inline void test_bst_min_max() {
     Node* root = get_tree();
     bst.bfs(root);
     BST_SEARCH::BST bsts;
+    printf("height of the tree    == [%8d]\n", bst.height(root));
     printf("minimum value in tree == [%8d]\n", bsts.min(root));
     printf("maximum value in tree == [%8d]\n", bsts.max(root));
 }

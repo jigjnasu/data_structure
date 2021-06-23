@@ -113,6 +113,13 @@ namespace BST {
             return res;
         }
 
+        int height(Node* root) {
+            if (root == nullptr) return 0;
+            const int l = height(root->left) + 1;
+            const int r = height(root->right) + 1;
+            return std::max(l, r);
+        }
+
     private:
         void m_preorder_data(Node* root, std::vector<int>& res) {
             if (root == nullptr) return;
