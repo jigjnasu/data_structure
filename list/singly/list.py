@@ -50,6 +50,21 @@ class List(object):
                 node = node.next
         return False
 
+    '''
+        let's start the head from 1 to n elements
+        and return the kth element in the list
+    '''
+    def kth_element(self, head, k):
+        if head:
+            i = 1
+            node = head
+            while node:
+                if i == k:
+                    return node.val
+                i += 1
+                node = node.next
+        return None
+
     def reverse(self, head):
         curr = head
         next = None

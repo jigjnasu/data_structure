@@ -34,6 +34,7 @@ def test_push():
 
 '''
     let's test the revering of the linked list
+    find kth element in the list
 '''
 def test_reverse():
     head = None
@@ -43,6 +44,11 @@ def test_reverse():
     l.traverse(head)
     head = l.reverse(head)
     l.traverse(head)
+
+    k = 51
+    print('[{}]th element in the list == [{}]'.format(k, l.kth_element(head, k)))
+    k = 13
+    print('[{}]th element in the list == [{}]'.format(k, l.kth_element(head, k)))
 
 if __name__ == '__main__':
     #test_push()
