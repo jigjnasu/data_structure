@@ -23,7 +23,9 @@ def get_tree_rec():
         root = b.insert_rec(root, e)
     return root
 
-
+'''
+    test case of insert iterative and recursive approach
+'''
 def test_insert():
     b = bst.BST()
     root1 = get_tree_iter()
@@ -31,6 +33,9 @@ def test_insert():
     b.bfs(root1)
     b.bfs(root2)
 
+'''
+    test case for traversal testing pre, in, post and bfs
+'''
 def test_traversals():
     b = bst.BST()
     root = get_tree_iter()
@@ -51,7 +56,16 @@ def test_traversals():
     print('----------------------------- post order data -----------------------------')
     print(b.postorder_data(root))
 
+'''
+    testing of height of the tree
+'''
+def test_height():
+    b = bst.BST()
+    root = get_tree_iter()
+    b.bfs(root)
+    print('height of the tree == [{}]'.format(b.height(root)))
 
 if __name__ == '__main__':
     #test_insert()
-    test_traversals()
+    #test_traversals()
+    test_height()

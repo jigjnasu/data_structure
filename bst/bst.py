@@ -37,6 +37,13 @@ class BST(object):
                 root.right = self.insert_rec(root.right, val)
         return root
 
+    def height(self, root):
+        if root == None:
+            return 0
+        l = self.height(root.left) + 1
+        r = self.height(root.right) + 1
+        return max(l, r)
+
     def preorder(self, root):
         if root == None:
             return
