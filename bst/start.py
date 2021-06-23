@@ -44,6 +44,13 @@ def test_traversals():
     print('--------------------------------- post order ------------------------------')
     b.postorder(root)
     print('')
+    print('----------------------------- pre order data ------------------------------')
+    print(b.preorder_data(root))
+    print('----------------------------- in order data -------------------------------')
+    print(b.inorder_data(root))
+    print('----------------------------- post order data -----------------------------')
+    print(b.postorder_data(root))
+
 
 if __name__ == '__main__':
     #test_insert()

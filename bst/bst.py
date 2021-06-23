@@ -58,6 +58,21 @@ class BST(object):
         self.postorder(root.right)
         print(root.val, end=' ')
 
+    def preorder_data(self, root):
+        data = []
+        self._preorder_data(root, data)
+        return data
+
+    def inorder_data(self, root):
+        data = []
+        self._inorder_data(root, data)
+        return data
+
+    def postorder_data(self, root):
+        data = []
+        self._postorder_data(root, data)
+        return data
+
     def bfs(self, root):
         print('--------------------------------------------------------')
         if root is not None:
@@ -75,3 +90,25 @@ class BST(object):
                     i -= 1
                 print('')
         print('--------------------------------------------------------')
+
+    def _preorder_data(self, root, data):
+        if root == None:
+            return
+        data.append(root.val)
+        self._preorder_data(root.left, data)
+        self._preorder_data(root.right, data)
+
+    def _inorder_data(self, root, data):
+        if root == None:
+            return
+        self._inorder_data(root.left, data)
+        data.append(root.val)
+        self._inorder_data(root.right, data)
+
+    def _postorder_data(self, root, data):
+        if root == None:
+            return
+        self._postorder_data(root.left, data)
+        self._postorder_data(root.right, data)
+        data.append(root.val)
+
