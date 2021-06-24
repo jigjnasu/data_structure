@@ -41,6 +41,19 @@ class List(object):
         else:
             return None
 
+    def pop_front(self, head):
+        if head:
+            head = head.next
+        return head
+    
+    def pop_back(self, head):
+        if head:
+            node = head
+            while node.next.next:
+                node = node.next
+            node.next = None
+        return head
+
     def search(self, head, k):
         if head:
             node = head

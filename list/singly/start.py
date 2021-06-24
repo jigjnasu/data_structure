@@ -63,7 +63,22 @@ def test_sort():
     head = l.sort(head)
     l.traverse(head)
 
+'''
+    test some delete operations
+'''
+def test_remove():
+    head = None
+    l = list.List()
+    for i in range(20):
+        head = l.push_back(head, i)
+    l.traverse(head)
+    head = l.pop_front(head)
+    l.traverse(head)
+    head = l.pop_back(head)
+    l.traverse(head)
+
 if __name__ == '__main__':
     #test_push()
     #test_reverse()
-    test_sort()
+    #test_sort()
+    test_remove()
