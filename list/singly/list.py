@@ -50,6 +50,17 @@ class List(object):
                 node = node.next
         return False
 
+    def sort(self, head):
+        if head is None or head.next is None:
+            return head
+        mid = self._get_middle(head)
+        mid_next = mid.next
+        mid.next = None
+        left = self.sort(head)
+        right = self.sort(mid_next)
+        new_head = self._merge(left, right)
+        return new_head
+
     '''
         let's start the head from 1 to n elements
         and return the kth element in the list
@@ -85,3 +96,26 @@ class List(object):
             node = node.next
         print('')
         print('--------------------------------------------------')
+
+    def _merge(self, left, right):
+        if left is None:
+            return right
+        elif right is None:
+            return left
+        else:
+            new_head = None
+            if left.val < right.val:
+                new_head = left
+                new_head.next = self._merge(left.next, right)
+            else:
+                new_head = right
+                new_head.next = self._merge(left, right.next)
+            return new_head
+
+    def _get_middle(self, head):
+        slow = head
+        fast = head
+        while fast and fast.next and fast.next.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow

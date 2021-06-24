@@ -5,6 +5,7 @@
 '''
 
 import list
+import random
 
 '''
     list push_front, push_back and traversal test
@@ -50,6 +51,19 @@ def test_reverse():
     k = 13
     print('[{}]th element in the list == [{}]'.format(k, l.kth_element(head, k)))
 
+'''
+    test the sorting of singly linked list
+'''
+def test_sort():
+    head = None
+    l = list.List()
+    for _ in range(200):
+        head = l.push_back(head, random.randint(1, 10000))
+    l.traverse(head)
+    head = l.sort(head)
+    l.traverse(head)
+
 if __name__ == '__main__':
     #test_push()
-    test_reverse()
+    #test_reverse()
+    test_sort()
