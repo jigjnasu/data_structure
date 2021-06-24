@@ -101,6 +101,14 @@ class List(object):
         head = prev
         return head
 
+    def size(self, head):
+        s = 0
+        node = head
+        while node:
+            node = node.next
+            s += 1
+        return s
+
     def traverse(self, head):
         print('--------------------------------------------------')
         node = head

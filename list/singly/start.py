@@ -65,6 +65,7 @@ def test_sort():
 
 '''
     test some delete operations
+    size of the linked list
 '''
 def test_remove():
     head = None
@@ -72,10 +73,15 @@ def test_remove():
     for i in range(20):
         head = l.push_back(head, i)
     l.traverse(head)
+    print('size of linked list == [{}]'.format(l.size(head)))
     head = l.pop_front(head)
     l.traverse(head)
+    print('size of linked list == [{}]'.format(l.size(head)))
     head = l.pop_back(head)
     l.traverse(head)
+    print('size of linked list == [{}]'.format(l.size(head)))
+
+
 
 if __name__ == '__main__':
     #test_push()
