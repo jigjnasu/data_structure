@@ -7,6 +7,7 @@
 import common
 import bst
 import bst_search
+import bst_construct
 
 def get_tree_iter():
     arr = [100, 50, 150, 25, 75, 125, 175, 30, 45, 55, 65, 165, 185, 200, 15, 20, 10, 5, 1, 7, 9, 23, 180, 300]
@@ -88,8 +89,23 @@ def test_search():
     print('mimimum value in tree == [{}]'.format(bs.min(root)))
     print('maximum value in tree == [{}]'.format(bs.max(root)))
 
+'''
+    testing started from construction of BST from different sources
+    1. sorted array
+'''
+
+def test_construct_bst():
+    b = bst.BST()
+    bstc = bst_construct.BST()
+    arr = []
+    for i in range(1, 21):
+        arr.append(i)
+    b.bfs(bstc.build_from_sorted_array(arr))
+    
+
 if __name__ == '__main__':
     #test_insert()
     #test_traversals()
     #test_height()
-    test_search()
+    #test_search()
+    test_construct_bst()
