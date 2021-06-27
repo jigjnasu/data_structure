@@ -101,11 +101,21 @@ def test_construct_bst():
     for i in range(1, 21):
         arr.append(i)
     b.bfs(bstc.build_from_sorted_array(arr))
-    
 
+def test_construct_bst_from_pre_post():
+    b = bst.BST()
+    bstc = bst_construct.BST()
+    root = get_tree_iter()
+    b.bfs(root)
+    arr = b.preorder_data(root)
+    print(arr)
+    root = bstc.build_from_pre_order_array(arr)
+    b.bfs(root)
+    
 if __name__ == '__main__':
     #test_insert()
     #test_traversals()
     #test_height()
     #test_search()
-    test_construct_bst()
+    #test_construct_bst()
+    test_construct_bst_from_pre_post()
