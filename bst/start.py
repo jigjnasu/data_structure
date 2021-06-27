@@ -111,6 +111,12 @@ def test_construct_bst_from_pre_post():
     print(arr)
     root = bstc.build_from_pre_order_array(arr)
     b.bfs(root)
+
+    arr = b.postorder_data(root)
+    print(arr)
+    bstc.reset(len(arr) - 1)
+    root = bstc.build_from_post_order_array(arr)
+    b.bfs(root)
     
 if __name__ == '__main__':
     #test_insert()
